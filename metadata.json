@@ -1,0 +1,9 @@
+{
+  "name": "AI Lifetime Guardian",
+  "description": "Real-time home safety monitoring for elderly fall detection and child hazard prevention using Gemini Multimodal Live API.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone",
+    "geolocation"
+  ]
+}
