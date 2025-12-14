@@ -174,3 +174,14 @@ By combining AI reasoning with human-centered design, LifeGuardianAI aims to mak
 📌 Hackathon Note
 
 This project emphasizes AI reasoning, safety design, and real-world impact over raw automation, demonstrating how AI systems can act responsibly in sensitive human environments.
+<img width="1054" height="928" alt="image" src="https://github.com/user-attachments/assets/7fc69d86-8aba-47eb-a342-f2b424e1a32b" />
+
+<img width="899" height="638" alt="image" src="https://github.com/user-attachments/assets/f3055425-5453-4292-80a9-1702e147cb9e" />
+used cline :
+<img width="1919" height="906" alt="image" src="https://github.com/user-attachments/assets/8c3bc441-1397-4ad8-9251-6ae741de5500" />
+<img width="1914" height="907" alt="image" src="https://github.com/user-attachments/assets/4fe8c79d-ae6a-41ca-90fd-78e3c5356080" />
+<img width="1919" height="952" alt="image" src="https://github.com/user-attachments/assets/fb59d136-bee7-4da9-a46e-bc43b320e8d2" />
+
+
+
+
