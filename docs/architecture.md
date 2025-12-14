@@ -88,30 +88,8 @@ Defines the contract for incident logging, system states, and call management:
 
 ### 3.2 Connection Architecture
 
-┌─────────────────────────────────────────────────────────┐
-│                    Browser Client                       │
-├─────────────────────────────────────────────────────────┤
-│  Webcam (640×480) ──→ JPEG@3FPS ──→ Base64             │
-│  Microphone ──→ PCM 16kHz ──→ Float32 ──→ Int16        │
-└─────────────────────┬───────────────────────────────────┘
-                      │ WebSocket (Bidirectional)
-                      ↓
-┌─────────────────────────────────────────────────────────┐
-│           Gemini Live API (WebSocket Server)            │
-├─────────────────────────────────────────────────────────┤
-│  • Vision Model: Analyzes JPEG frames                   │
-│  • Audio Decoder: Processes live microphone input       │
-│  • LLM Core: Executes system instructions               │
-│  • Audio Synthesizer: Generates Kore voice responses    │
-└─────────────────────┬───────────────────────────────────┘
-                      │ Server Messages
-                      ↓
-┌─────────────────────────────────────────────────────────┐
-│               Response Handler (Browser)                │
-├─────────────────────────────────────────────────────────┤
-│  • Text Transcription: Parsed for [TAGS]               │
-│  • Audio Data: Decoded PCM → AudioBuffer → Playback    │
-└─────────────────────────────────────────────────────────┘
+<img width="758" height="598" alt="image" src="https://github.com/user-attachments/assets/fd70c23a-616f-4013-b1b4-ea96bfa348f8" />
+
 
 ### 3.3 System Instructions (AI Behavior Programming)
 
@@ -267,25 +245,15 @@ Audio Generation:
 
 Voice Scripts:
 
- Scenario        │ Voice Output
-─────────────────┼────────────────────────────────────────────────────────────────────────────
- Chest clutching │ "I detect a medical warning. You are holding your chest. Are you in pain?"
- Knife detected  │ "Drop the knife immediately! This is dangerous!"
- Fall detected   │ "I see you've fallen. Can you hear me? I'm checking for injuries."
- Emergency call  │ "Dialing Emergency Services... [Ring]... AI Reporting from [location]..."
+<img width="1728" height="170" alt="image" src="https://github.com/user-attachments/assets/281723bf-80bc-47b3-a4a3-222bdbd91c7f" />
+
 
 ### 6.4 Escalation Stage (Multi-Channel Alerts)
 
 Escalation Matrix:
 
-┌─────────────────┬──────────────┬───────────────────┐
-│ Incident Type   │ First Action │ Escalation Path   │
-├─────────────────┼──────────────┼───────────────────┤
-│ Heart Attack    │ Voice Check  │ 911 → Logs        │
-│ Fall            │ Voice Check  │ 911 → Family      │
-│ Child + Knife   │ Command      │ Parents → 911     │
-│ Fire            │ Alarm        │ 911 + Parents     │
-└─────────────────┴──────────────┴───────────────────┘
+<img width="810" height="207" alt="image" src="https://github.com/user-attachments/assets/08c23b42-724a-4bcc-a8e5-5a812e7dd90b" />
+
 
 Implementation:
 
@@ -315,42 +283,8 @@ Notification Channels:
 
 ## 7. DATA FLOW DIAGRAM
 
-┌──────────────────────────────────────────────────────────────┐
-│                        USER ENVIRONMENT                       │
-│  ┌────────────┐              ┌─────────────┐                 │
-│  │  Webcam    │─────────────▶│ VideoMonitor│                |
-│  └────────────┘   640×480    └──────┬──────┘                 │
-│                    @3FPS            │ JPEG Base64            │
-│  ┌────────────┐                     │                        │
-│  │ Microphone │                     ▼                        │
-│  └──────┬─────┘              ┌─────────────────┐             │
-│         │ PCM 16kHz          │  GeminiLive     │            │
-│         └───────────────────▶│  Service        │            │
-│                               └────────┬────────┘            │
-│                                        │ WebSocket           │
-└────────────────────────────────────────┼─────────────────────┘
-                                         │
-                        ┌────────────────▼────────────────┐
-                        │  GOOGLE GEMINI 2.5 FLASH API    │
-                        │  - Vision Analysis              │
-                        │  - Audio Processing             │
-                        │  - System Instruction Execution │
-                        │  - Voice Synthesis              │
-                        └────────────────┬────────────────┘
-                                         │ Response
-                        ┌────────────────▼────────────────┐
-                        │    Response Handler             │
-                        │  - Parse Transcription          │
-                        │  - Extract [TAGS]               │
-                        │  - Decode Audio PCM             │
-                        └────┬────────────────────┬───────┘
-                             │                    │
-                   ┌─────────▼─────────┐  ┌──────▼──────┐
-                   │ Dashboard         │  │ Audio       │
-                   │ - Logs            │  │ Playback    │
-                   │ - Call UI         │  │ (Speaker)   │
-                   │ - WhatsApp        │  └─────────────┘
-                   └───────────────────┘
+<img width="947" height="875" alt="image" src="https://github.com/user-attachments/assets/a2332c71-4e35-4bda-93a5-19bca3ed0b6e" />
+
 
 --------
 
